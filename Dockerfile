@@ -74,9 +74,16 @@ RUN adduser \
       --disabled-password \
       --shell /bin/bash \
       --gecos "" \
-      linuxgsm \
-    && usermod -G tty linuxgsm \
-    && chown -R linuxgsm:linuxgsm /home/linuxgsm
+      -u 750 \
+      linuxgsm 
+        
+RUN getent group 
+#Mod Folders
+RUN	chown -R linuxgsm:linuxgsm /home/linuxgsm &&\
+	usermod --group tty linuxgsm &&\
+       	chown -R linuxgsm:linuxgsm /home/linuxgsm/ && \
+       	chmod 755 -R /home/linuxgsm
+
 
 # Switch to the user linuxgsm
 USER linuxgsm
@@ -93,7 +100,15 @@ USER linuxgsm
 #	chmod 755 -R /home/linuxgsm
 
 ## linuxgsm.sh
-RUN wget https://linuxgsm.com/dl/linuxgsm.sh -P /home/linuxgsm
+RUN wget https://linuxgsm.com/dl/linuxgsm.sh -P /home/linuxgsm/
+
+## folder config
+#RUN groupadd -g 750 -o linuxgsm && \
+#RUN    adduser --uid 750 --disabled-password --gecos "" --ingroup linuxgsm linuxgsm && \
+#       usermod -G tty linuxgsm && \
+#       chown -R linuxgsm:linuxgsm /home/linuxgsm/ && \
+#       chmod 755 -R /home/linuxgsm
+
 
 
 USER linuxgsm
