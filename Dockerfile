@@ -76,8 +76,13 @@ RUN adduser \
       --gecos "" \
       -u 750 \
       linuxgsm 
-        
+
+# Retuurning group membership        
 RUN getent group 
+
+# Downloading linuxgsm to home dir
+RUN wget https://linuxgsm.com/dl/linuxgsm.sh -P /home/linuxgsm/
+
 #Mod Folders
 RUN	chown -R linuxgsm:linuxgsm /home/linuxgsm &&\
 	usermod --group tty linuxgsm &&\
@@ -89,29 +94,6 @@ RUN	chown -R linuxgsm:linuxgsm /home/linuxgsm &&\
 USER linuxgsm
 
 
-
-## user config
-#RUN groupadd -g 750 -o linuxgsm && \
-#	adduser --uid 750 --disabled-password --gecos "" --ingroup linuxgsm linuxgsm && \
-#	chown linuxgsm:linuxgsm /linuxgsm.sh && \
-#	chmod +x /linuxgsm.sh && \
-#	usermod -G tty linuxgsm && \
-#	chown -R linuxgsm:linuxgsm /home/linuxgsm/ && \
-#	chmod 755 -R /home/linuxgsm
-
-## linuxgsm.sh
-RUN wget https://linuxgsm.com/dl/linuxgsm.sh -P /home/linuxgsm/
-
-## folder config
-#RUN groupadd -g 750 -o linuxgsm && \
-#RUN    adduser --uid 750 --disabled-password --gecos "" --ingroup linuxgsm linuxgsm && \
-#       usermod -G tty linuxgsm && \
-#       chown -R linuxgsm:linuxgsm /home/linuxgsm/ && \
-#       chmod 755 -R /home/linuxgsm
-
-
-
-USER linuxgsm
 WORKDIR /home/linuxgsm
 VOLUME [ "/home/linuxgsm" ]
 
