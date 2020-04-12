@@ -10,6 +10,7 @@
 [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://github.com/GameServerManagers/LinuxGSM/blob/master/LICENSE)
 
 This docker image is under development and not officialy supported.
+I did update missing packages.
 
 The developers of LinuxGSM are not currently docker experts. So if there is someone interested in becoming a LinuxGSM docker developer please contact us.
 
