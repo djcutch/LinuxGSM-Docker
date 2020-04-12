@@ -65,7 +65,6 @@ RUN dpkg --add-architecture i386 && \
 		libnm-glib-dev:i386 \
 		netcat \
 		lib32stdc++6 \
-		steamcmd \
 		&& apt-get clean \
 	  && rm -rf /var/lib/apt/lists/*
 
@@ -83,18 +82,19 @@ RUN adduser \
 USER linuxgsm
 
 
-## linuxgsm.sh
-RUN wget https://linuxgsm.com/dl/linuxgsm.sh
 
 ## user config
-RUN groupadd -g 750 -o linuxgsm && \
-	adduser --uid 750 --disabled-password --gecos "" --ingroup linuxgsm linuxgsm && \
-	chown linuxgsm:linuxgsm /linuxgsm.sh && \
-	chmod +x /linuxgsm.sh && \
-	cp /linuxgsm.sh /home/linuxgsm/linuxgsm.sh && \
-	usermod -G tty linuxgsm && \
-	chown -R linuxgsm:linuxgsm /home/linuxgsm/ && \
-	chmod 755 /home/linuxgsm
+#RUN groupadd -g 750 -o linuxgsm && \
+#	adduser --uid 750 --disabled-password --gecos "" --ingroup linuxgsm linuxgsm && \
+#	chown linuxgsm:linuxgsm /linuxgsm.sh && \
+#	chmod +x /linuxgsm.sh && \
+#	usermod -G tty linuxgsm && \
+#	chown -R linuxgsm:linuxgsm /home/linuxgsm/ && \
+#	chmod 755 -R /home/linuxgsm
+
+## linuxgsm.sh
+RUN wget https://linuxgsm.com/dl/linuxgsm.sh -P /home/linuxgsm
+
 
 USER linuxgsm
 WORKDIR /home/linuxgsm
