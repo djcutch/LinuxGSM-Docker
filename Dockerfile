@@ -65,6 +65,7 @@ RUN dpkg --add-architecture i386 && \
 		libnm-glib-dev:i386 \
 		netcat \
 		lib32stdc++6 \
+		iproute2 \ 
 		&& apt-get clean \
 	  && rm -rf /var/lib/apt/lists/*
 
@@ -105,3 +106,4 @@ ENV PATH=$PATH:/home/linuxgsm
 
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["bash","/entrypoint.sh" ]
+EXPOSE 27015
