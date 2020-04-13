@@ -66,7 +66,8 @@ RUN dpkg --add-architecture i386 && \
 		libnm-glib-dev:i386 \
 		netcat \
 		lib32stdc++6 \
-		iproute2 \ 
+		iproute2 \
+		vim \  
 		&& apt-get clean \
 	  && rm -rf /var/lib/apt/lists/*
 
