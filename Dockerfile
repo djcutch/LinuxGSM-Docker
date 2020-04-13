@@ -16,6 +16,7 @@ ENV LANG en_US.utf8
 ## Base System
 RUN dpkg --add-architecture i386 && \
 	apt update -y && \
+	apt upgrade -y && \
 	apt install -y \
 		mailutils \
 		postfix \
